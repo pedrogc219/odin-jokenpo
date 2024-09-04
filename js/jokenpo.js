@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
     let choice;
     let roll = Math.ceil(Math.random() * 3);
@@ -29,3 +26,29 @@ function getHumanChoice() {
         getHumanChoice();
     }
 }
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice) {
+        return `Draw!\n${humanScore} : ${computerScore}`;
+    } else if (humanChoice == "rock" && computerChoice == "scissors") {
+        humanScore++;
+        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+    } else if (humanChoice == "paper" && computerChoice == "rock") {
+        humanScore++;
+        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+    } else if (humanChoice == "scissors" && computerChoice == "paper") {
+        humanScore++;
+        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+    } else {
+        computerScore++;
+        return `You Lost... ${humanChoice} loses to ${computerChoice}!\n${humanScore} : ${computerScore}`;
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+
+console.log(playRound(humanChoice, computerChoice));
