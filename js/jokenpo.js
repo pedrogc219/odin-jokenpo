@@ -53,3 +53,5 @@ function playGame() {
         console.log(playRound(getHumanChoice(), getComputerChoice()));
     }
 }
+
+playGame();
