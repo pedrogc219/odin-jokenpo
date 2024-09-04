@@ -27,28 +27,29 @@ function getHumanChoice() {
     }
 }
 
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice == computerChoice) {
-        return `Draw!\n${humanScore} : ${computerScore}`;
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-        humanScore++;
-        return `You win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
-    } else {
-        computerScore++;
-        return `You Lost... ${humanChoice} loses to ${computerChoice}!\n${humanScore} : ${computerScore}`;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound(humanChoice, computerChoice) {
+        if (humanChoice == computerChoice) {
+            return `${humanChoice} vs ${computerChoice}\nDraw!\n${humanScore} : ${computerScore}`;
+        } else if (humanChoice == "rock" && computerChoice == "scissors") {
+            humanScore++;
+            return `${humanChoice} vs ${computerChoice}\nYou win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+        } else if (humanChoice == "paper" && computerChoice == "rock") {
+            humanScore++;
+            return `${humanChoice} vs ${computerChoice}\nYou win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+        } else if (humanChoice == "scissors" && computerChoice == "paper") {
+            humanScore++;
+            return `${humanChoice} vs ${computerChoice}\nYou win! ${humanChoice} beats ${computerChoice}!\n${humanScore} : ${computerScore}`;
+        } else {
+            computerScore++;
+            return `${humanChoice} vs ${computerChoice}\nYou Lost... ${humanChoice} loses to ${computerChoice}!\n${humanScore} : ${computerScore}`;
+        }
+    }
+
+    for (i = 0; i < 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
     }
 }
-
-let humanScore = 0;
-let computerScore = 0;
-
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-
-console.log(playRound(humanChoice, computerChoice));
